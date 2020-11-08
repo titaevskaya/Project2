@@ -14,14 +14,14 @@
       до {{ "{:,}".format(nights_max.nights|int) | replace(",", " ") }} ночей</p>
     <!-- CARDS -->
     <div class="row mt-5">
-      {% for tour in tours%}
+      {% for tour in tours %}
       <div class="col-4">
         <div class="card mb-4">
           <img src={{ tour.picture }} class="card-img-top img-fluid" alt="">
           <div class="card-body">
             <h2 class="h5 card-title">{{ tour.title }}</h2>
             <p class="card-text">{{ tour.description|truncate(100) }}</p>
-            <a href="#" class="btn btn-sm btn-primary">Подробнее</a>
+            <a href="/tours/{{ tour.id }}/" class="btn btn-sm btn-primary">Подробнее</a>
           </div>
         </div>
       </div>

@@ -6,6 +6,7 @@ app = Flask(__name__)  # объявим экземпляр фласка
 
 with open("tours.json", encoding='utf-8') as file:
     tours = json.load(file)
+print(type(tours))
 
 
 @app.route('/')
@@ -16,7 +17,7 @@ def render_main():
 
 @app.route('/departures/<departure>/')
 def render_departures(departure):
-    filtered_tours = [v for k, v in tours['tours'].items() if v.get('departure') == departure]
+    filtered_tours = [{**v, 'id': k} for k, v in tours['tours'].items() if v.get('departure') == departure]
     return render_template('departure.html', tours=filtered_tours,
                            departures=tours["departures"], departure=departure)
 
